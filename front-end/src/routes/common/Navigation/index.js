@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
 import styled from 'styled-components';
 // Outlet renders the nested components between the <Route></Route>
-// Navigation Bar Persists for all routes
+// Navigation Bar Persists for all routes -> NavigationContainer
 const Navigation = () => {
   return (
     <Fragment>
@@ -14,6 +14,7 @@ const Navigation = () => {
         <NavLinks>
           <NavLink to="/fav">Favorites</NavLink>
           <NavLink to="/cart">Cart</NavLink>
+          <NavLink to="/sell">Sell</NavLink>
         </NavLinks>
       </NavigationContainer>
       <Outlet />
