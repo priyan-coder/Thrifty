@@ -1,23 +1,33 @@
-import DisplaySearchResults from '../../../components/DisplaySearchResults';
+import DisplayCategories from '../../../components/DisplayCategories';
 const Home = () => {
-  const searchResults = [
+  const categories = [
     {
       id: 1,
-      title: 'Hats',
-      imageUrl: ''
+      title: 'hats',
+      imageUrl: 'https://i.ibb.co/cvpntL1/hats.png'
     },
     {
       id: 2,
-      title: 'Sneakers',
-      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png'
+      title: 'jackets',
+      imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png'
     },
     {
       id: 3,
-      title: 'Jackets',
-      imageUrl: ''
+      title: 'sneakers',
+      imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png'
+    },
+    {
+      id: 4,
+      title: 'womens',
+      imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png'
+    },
+    {
+      id: 5,
+      title: 'mens',
+      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png'
     }
   ];
-  return <DisplaySearchResults searchResults={searchResults} />;
+  return <DisplayCategories categories={categories} />;
 };
 
 export default Home;
