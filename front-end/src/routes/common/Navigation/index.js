@@ -8,13 +8,13 @@ const Navigation = () => {
   return (
     <Fragment>
       <NavigationContainer>
-        <LogoContainer to="/">
+        <LogoContainer to="/home">
           <CrwnLogo />
         </LogoContainer>
         <NavLinks>
-          <NavLink to="/fav">Favorites</NavLink>
-          <NavLink to="/cart">Cart</NavLink>
-          <NavLink to="/sell">Sell</NavLink>
+          <NavLink to="/home/fav">Favorites</NavLink>
+          <NavLink to="/home/cart">Cart</NavLink>
+          <NavLink to="/home/sell">Sell</NavLink>
         </NavLinks>
       </NavigationContainer>
       <Outlet />
