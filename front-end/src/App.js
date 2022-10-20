@@ -1,23 +1,18 @@
-import DisplaySearchResults from './components/DisplaySearchResults';
+import Home from './routes/common/Home';
+import Navigation from './routes/common/Navigation';
+import CartPage from './routes/buyer/CartPage';
+import FavoritesPage from './routes/buyer/FavoritesPage';
+import { Routes, Route } from 'react-router-dom';
 const App = () => {
-  const searchResults = [
-    {
-      id: 1,
-      title: 'Hats',
-      imageUrl: ''
-    },
-    {
-      id: 2,
-      title: 'Sneakers',
-      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png'
-    },
-    {
-      id: 3,
-      title: 'Jackets',
-      imageUrl: ''
-    }
-  ];
-  return <DisplaySearchResults searchResults={searchResults} />;
+  return (
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index={true} element={<Home />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="fav" element={<FavoritesPage />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;
