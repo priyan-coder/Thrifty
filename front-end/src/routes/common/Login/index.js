@@ -1,17 +1,88 @@
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
 import TextField from '@mui/material/TextField';
+import React, { useRef, useState } from 'react';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
+
 const Login = () => {
+  const defaultFormFields = {
+    email: '',
+    password: ''
+  };
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { email, password } = formFields;
+  const [isEmailValid, setEmailValid] = useState(false);
+  const [isPasswordValid, setPasswordValid] = useState(false);
+  const emailRef = useRef(null);
+  const pwdRef = useRef(null);
+
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
+
+  const handleChange = (event) => {
+    const reg = /\S+@\S+\.\S+/;
+    const { name, value } = event.target;
+    if (name.localeCompare('email') === 0) {
+      setEmailValid(reg.test(value));
+    } else {
+      value.length > 5 ? setPasswordValid(true) : setPasswordValid(false);
+    }
+    setFormFields({ ...formFields, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formFields);
+    resetFormFields();
+    setEmailValid(false);
+    setPasswordValid(false);
+  };
   return (
     <FormContainer>
       <LoginForm>
         <h2>Thrifty</h2>
         <CrwnLogo />
-        <TextField id="email" label="email" variant="outlined" />
-        <TextField id="password" label="password" variant="outlined" />
+        <TextField
+          fullWidth
+          required={true}
+          name="email"
+          type="email"
+          value={email}
+          id="email"
+          label="email"
+          variant="outlined"
+          onChange={handleChange}
+          inputRef={emailRef}
+          error={document.activeElement === emailRef.current && !isEmailValid}
+          helperText={!isEmailValid && 'Please enter a valid email'}
+        />
+        <TextField
+          fullWidth
+          required={true}
+          name="password"
+          type="password"
+          value={password}
+          id="password"
+          label="password"
+          variant="outlined"
+          onChange={handleChange}
+          inputRef={pwdRef}
+          error={document.activeElement === pwdRef.current && !isPasswordValid}
+          helperText={
+            !isPasswordValid &&
+            'Please enter a password with at least 6 characters'
+          }
+        />
         <MultipleButtons>
-          <Button variant="contained">Login</Button>
+          <Button
+            disabled={!isEmailValid || !isPasswordValid}
+            type="submit"
+            variant="contained"
+            onClick={handleSubmit}
+          >
+            Login
+          </Button>
           <Button variant="text">Sign Up</Button>
         </MultipleButtons>
       </LoginForm>
@@ -29,8 +100,8 @@ const MultipleButtons = styled.div`
 `;
 
 const LoginForm = styled.div`
-  height: 50%;
-  width: 30%;
+  height: 60%;
+  width: 40%;
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -55,6 +126,7 @@ const FormContainer = styled.div`
   justify-content: center;
   border: 1px solid black;
   overflow: hidden;
-  background-color: white;
+  background: radial-gradient(#fceabb, #f8b500);
+  background-repeat: no-repeat;
 `;
 export default Login;
