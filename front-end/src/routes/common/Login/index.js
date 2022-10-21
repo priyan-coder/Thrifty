@@ -51,7 +51,7 @@ const Login = () => {
           type="email"
           value={email}
           id="email"
-          label="email"
+          label="Email"
           variant="outlined"
           onChange={handleChange}
           inputRef={emailRef}
@@ -65,7 +65,7 @@ const Login = () => {
           type="password"
           value={password}
           id="password"
-          label="password"
+          label="Password"
           variant="outlined"
           onChange={handleChange}
           inputRef={pwdRef}

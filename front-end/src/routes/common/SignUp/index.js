@@ -79,10 +79,10 @@ const SignUp = () => {
           fullWidth
           required={true}
           name="displayName"
-          type="displayName"
+          type="text"
           value={displayName}
           id="displayName"
-          label="displayName"
+          label="Name"
           variant="outlined"
           onChange={handleChange}
           inputRef={displayNameRef}
@@ -98,7 +98,7 @@ const SignUp = () => {
           type="email"
           value={email}
           id="email"
-          label="email"
+          label="Email"
           variant="outlined"
           onChange={handleChange}
           inputRef={emailRef}
@@ -112,7 +112,7 @@ const SignUp = () => {
           type="password"
           value={password}
           id="password"
-          label="password"
+          label="Password"
           variant="outlined"
           onChange={handleChange}
           inputRef={pwdRef}
@@ -127,10 +127,10 @@ const SignUp = () => {
           fullWidth
           required={true}
           name="confirmPassword"
-          type="confirmPassword"
+          type="password"
           value={confirmPassword}
           id="confirmPassword"
-          label="confirmPassword"
+          label="Confirm Password"
           variant="outlined"
           onChange={handleChange}
         />
