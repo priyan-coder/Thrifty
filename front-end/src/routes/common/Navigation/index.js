@@ -23,11 +23,12 @@ const Navigation = () => {
 };
 
 export const NavigationContainer = styled.div`
-  height: 70px;
+  height: 90px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  background-color: #182b3a;
 `;
 
 export const LogoContainer = styled(Link)`
@@ -47,6 +48,7 @@ export const NavLinks = styled.div`
 export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
+  color: white;
 `;
 
 export default Navigation;
