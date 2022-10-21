@@ -6,15 +6,27 @@ const Login = () => {
   return (
     <FormContainer>
       <LoginForm>
-        <h2>Login</h2>
+        <h2>Thrifty</h2>
         <CrwnLogo />
         <TextField id="email" label="email" variant="outlined" />
         <TextField id="password" label="password" variant="outlined" />
-        <Button variant="contained">Login</Button>
+        <MultipleButtons>
+          <Button variant="contained">Login</Button>
+          <Button variant="text">Sign Up</Button>
+        </MultipleButtons>
       </LoginForm>
     </FormContainer>
   );
 };
+
+const MultipleButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  overflow: hidden;
+`;
 
 const LoginForm = styled.div`
   height: 50%;
@@ -30,7 +42,6 @@ const LoginForm = styled.div`
   h2 {
     font-weight: bold;
     margin: 0 6px 0;
-    text-transform: uppercase;
   }
   border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
