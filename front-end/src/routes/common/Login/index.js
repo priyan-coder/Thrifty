@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import React, { useRef, useState } from 'react';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
@@ -83,7 +84,9 @@ const Login = () => {
           >
             Login
           </Button>
-          <Button variant="text">Sign Up</Button>
+          <Button component={Link} to="/signup" variant="text">
+            Sign Up
+          </Button>
         </MultipleButtons>
       </LoginForm>
     </FormContainer>
@@ -126,7 +129,9 @@ const FormContainer = styled.div`
   justify-content: center;
   border: 1px solid black;
   overflow: hidden;
-  background: radial-gradient(#fceabb, #f8b500);
+  background: linear-gradient(#20a4f3, #182b3a);
   background-repeat: no-repeat;
 `;
 export default Login;
+
+//background: radial-gradient(#fceabb, #f8b500);
