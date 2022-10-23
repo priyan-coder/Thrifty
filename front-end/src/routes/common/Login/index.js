@@ -4,8 +4,18 @@ import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import React, { useRef, useState } from 'react';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
-
+import SetCurrentUser from '../../../redux/User/UserAction';
+import { useDispatch } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import { SelectCurrentUser } from '../../../redux/User/UserSelector';
 const Login = () => {
+  // useSelector takes an updated state object and picks out just the slice of state
+  // which we are interested in
+  // currentUser variable gets updated every time state gets updated and the component re-runs
+  // const currentUser = useSelector(SelectCurrentUser);
+  // dispatch passes the action object to the root reducer which inturn sends the action
+  // object to ever single reducer function
+  const dispatch = useDispatch();
   const defaultFormFields = {
     email: '',
     password: ''
@@ -34,7 +44,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formFields);
+    dispatch(SetCurrentUser(formFields));
     resetFormFields();
     setEmailValid(false);
     setPasswordValid(false);
