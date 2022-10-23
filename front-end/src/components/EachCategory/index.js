@@ -28,7 +28,7 @@ const Body = styled.div`
   justify-content: center;
   border: 1px solid black;
   background-color: white;
-  opacity: 0.7;
+  opacity: 0.9;
   position: absolute;
   h2 {
     font-weight: bold;
@@ -44,6 +44,7 @@ const Body = styled.div`
 `;
 
 const DirectoryItemContainer = styled.div`
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   min-width: 30%;
   height: 240px;
   flex: 1 1 auto;
@@ -51,6 +52,7 @@ const DirectoryItemContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+  border-radius: 5px;
   margin: 0 7.5px 15px;
   overflow: hidden;
   &:first-child {
