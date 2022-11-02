@@ -33,7 +33,7 @@ export const ItemDetails = styled.div`
   justify-content: center;
   padding: 10px 20px;
   span {
-    font-size: 16px;
+    font-size: 11px;
   }
 `;
 export default CartItem;
