@@ -1,10 +1,15 @@
 import { Outlet, Link } from 'react-router-dom';
 import { Fragment } from 'react';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
+import { useSelector } from 'react-redux';
+import CartIcon from '../../../components/CartIcon';
+import CartDropdown from '../../../components/CartDropdown';
+import { SelectIsCartOpen } from '../../../redux/Cart/CartSelector';
 import styled from 'styled-components';
 // Outlet renders the nested components between the <Route></Route>
 // Navigation Bar Persists for all routes -> NavigationContainer
-const Navigation = () => {
+const NavigationBar = () => {
+  const isCartOpen = useSelector(SelectIsCartOpen);
   return (
     <Fragment>
       <NavigationContainer>
@@ -12,10 +17,10 @@ const Navigation = () => {
           <CrwnLogo />
         </LogoContainer>
         <NavLinks>
-          <NavLink to="/home/fav">Favorites</NavLink>
-          <NavLink to="/home/cart">Cart</NavLink>
-          <NavLink to="/home/sell">Sell</NavLink>
+          <NavLink to="/home/sell">SELL</NavLink>
+          <CartIcon />
         </NavLinks>
+        {isCartOpen && <CartDropdown />}
       </NavigationContainer>
       <Outlet />
     </Fragment>
@@ -28,7 +33,7 @@ export const NavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  background-color: #182b3a;
+  background-color: black;
 `;
 
 export const LogoContainer = styled(Link)`
@@ -51,4 +56,4 @@ export const NavLink = styled(Link)`
   color: white;
 `;
 
-export default Navigation;
+export default NavigationBar;

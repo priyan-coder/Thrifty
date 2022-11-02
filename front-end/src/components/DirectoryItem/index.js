@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-const EachCategory = ({ title, imageUrl }) => {
+import { useNavigate } from 'react-router-dom';
+const DirectoryItem = ({ category }) => {
+  const { imageUrl, title, route } = category;
+  const navigate = useNavigate();
+  const onNavigateHandler = () => navigate(route);
   return (
-    <DirectoryItemContainer>
+    <DirectoryItemContainer onClick={onNavigateHandler}>
       <BackgroundImage imageUrl={imageUrl} />
       <Body>
         <h2>{title}</h2>
@@ -73,4 +77,4 @@ const DirectoryItemContainer = styled.div`
   }
 `;
 
-export default EachCategory;
+export default DirectoryItem;
