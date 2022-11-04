@@ -43,16 +43,13 @@ const PostCreation = () => {
     const checkPrice = /(\d+\.\d{1,2})/g;
     const checkQuantity = /^[1-9][0-9]*$/;
     const checkUrl = (urlString) => {
-      var urlPattern = new RegExp(
-        '^(https?:\\/\\/)?' + // validate protocol
-          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
-          '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
-          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
-          '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
-          '(\\#[-a-z\\d_]*)?$',
-        'i'
-      ); // validate fragment locator
-      return !!urlPattern.test(urlString);
+      let url;
+      try {
+        url = new URL(urlString);
+      } catch (e) {
+        return false;
+      }
+      return url.protocol === 'http:' || url.protocol === 'https:';
     };
     const { name, value } = event.target;
     if (name.localeCompare('name') === 0) {
@@ -140,6 +137,7 @@ const PostCreation = () => {
         inputRef={urlRef}
         fullWidth
         multiline
+        placeholder="https://www.google.com"
         required={true}
         name="imageUrl"
         value={imageUrl}
@@ -150,7 +148,6 @@ const PostCreation = () => {
       />
       <Autocomplete
         inputValue={category}
-        value={category}
         name="category"
         fullWidth
         onInputChange={(event, newInputValue) => {
