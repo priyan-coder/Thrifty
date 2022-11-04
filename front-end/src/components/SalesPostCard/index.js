@@ -1,16 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { SelectCartItems } from '../../redux/Cart/CartSelector';
-import { AddItemToCart } from '../../redux/Cart/CartAction';
 import Button from '@mui/material/Button';
-
-const ProductCard = ({ product }) => {
+import { RemoveSalesPost } from '../../redux/Sales/SalesAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { SelectSalesPosts } from '../../redux/Sales/SalesSelector';
+const SalesPostCard = ({ product }) => {
   const { name, price, imageUrl } = product;
+  const salesPosts = useSelector(SelectSalesPosts);
   const dispatch = useDispatch();
-  const cartItems = useSelector(SelectCartItems);
-
-  const addProductToCart = () => dispatch(AddItemToCart(cartItems, product));
-
+  const removePdtHandler = () => {
+    dispatch(RemoveSalesPost(salesPosts, product));
+  };
   return (
     <ProductCartContainer>
       <img src={imageUrl} alt={`${name}`} />
@@ -18,8 +17,8 @@ const ProductCard = ({ product }) => {
         <Name>{name}</Name>
         <Price>{price}</Price>
       </Footer>
-      <Button color="success" variant="contained" onClick={addProductToCart}>
-        Add to cart
+      <Button color="error" variant="contained" onClick={removePdtHandler}>
+        Delete Post
       </Button>
     </ProductCartContainer>
   );
@@ -74,4 +73,4 @@ const Price = styled.span`
   width: 10%;
 `;
 
-export default ProductCard;
+export default SalesPostCard;
