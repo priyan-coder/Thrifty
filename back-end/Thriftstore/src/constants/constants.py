@@ -19,7 +19,7 @@ class Constants:
     CONFIGS_COLLECTION = "configs_collection"
     TIMESTAMP = "timestamp"
     LAST_UPDATED = "last_updated"
-    USER_TYPE = "userType"
+    USER_TYPE = "user_type"
     PORT = "port"
 
     FIRSTNAME = "first_name"

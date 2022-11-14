@@ -107,6 +107,7 @@ class MongoUtils():
             collection.insert_many(docs_to_insert)
         elif isinstance(docs_to_insert,dict):
             collection.insert_one(docs_to_insert)
+        return {"status" : 200}
 
 
     '''

@@ -1,9 +1,10 @@
 """
 UnitTest Class
 """
-
 import unittest
 from Login.login import Login
+from Search.product_search import Search
+from User.User import User
 
 class Testing(unittest.TestCase):
 
@@ -36,7 +37,29 @@ class Testing(unittest.TestCase):
         Unit test case 2 to test User SignUp
         :return:
         '''
-        self.assertEqual(Login.sign_up("zain","shamm","xyz@blabla.com","qwertyuiop","buyer"),{"created_new_user" : True})
+        self.assertEqual(Login.sign_up("zain","Ken","xyz@blabla.com","qwertyuiop","buyer"),{"created_new_user" : True})
+
+
+    def test_search_1(self):
+        '''
+        Unit test case 2 to test User SignUp
+        :return:
+        '''
+        self.assertIsInstance(Search.get_search_results("jewelry"),dict,"Is an instace of dict")
+
+    def test_search_2(self):
+        '''
+        Unit test case 2 to test User SignUp
+        :return:
+        '''
+        self.assertNotIsInstance(Search.get_search_results("jewelry"),list,"Is not an instace of list")
+
+    def test_user_1(self):
+        '''
+        Unit test case 2 to test User SignUp
+        :return:
+        '''
+        self.assertEqual(User.add_sale_posts())
 
 if __name__ == '__main__':
     unittest.main()

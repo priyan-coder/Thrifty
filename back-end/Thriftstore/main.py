@@ -6,6 +6,8 @@
 from klein import Klein
 from constants.constants import Constants
 from Login.login import Login
+from User.User import User
+from Search.product_search import Search
 import json
 
 
@@ -107,6 +109,43 @@ class Controller():
         login = Login()
         resp = login.sign_up(firstname=first_name,lastname=last_name,email_id=email,password=password,usertype=usertype)
         return json.dumps(resp)
+
+
+    @app.route("/products_in_cart", methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
+    def get_products_in_cart(self, request=None):
+        request_params = Controller.decode_request(request)
+
+        user_id = request_params.get("user_id") if "user_id" in request_params else None
+        resp = User.get_products_in_cart(user_id=user_id)
+        return json.dumps(resp)
+
+
+    @app.route("/update_products_in_cart",methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
+    def update_products_in_cart(self,request=None):
+        request_params = Controller.decode_request(request)
+        user_id = request_params.get("user_id") if "user_id" in request_params else None
+        products = request_params.get("products")
+        resp = User.update_products_in_cart(user_id,products)
+        return json.dumps(resp)
+
+    @app.route("/add_sale_posts",methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
+    def add_sale_posts(self,request=None):
+        request_params = Controller.decode_request(request)
+        user_id = request_params.get("user_id") if "user_id" in request_params else None
+        products = request_params.get("products")
+        resp = User.add_sale_posts(user_id,products)
+        return json.dumps(resp)
+
+    @app.route("/category_search",methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
+    def category_search_(self,request=None):
+        request_params = Controller.decode_request(request)
+        category = request_params.get("category") if "category" in request_params else None
+        resp = Search.get_search_results(category = category)
+        return  json.dumps(resp)
+
+
+
+
 
 
 # Press the green button in the gutter to run the script.

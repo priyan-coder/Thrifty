@@ -89,7 +89,12 @@ def getfile(url, local_filename):
         return json.loads('{}')
 
 
-
+def t_post():
+    """
+    HTTP Doc
+    """
+    post("http://192.168.255.97:5000/vectors", "{\"keywords\":\"I want jobs in Hyderabad\"}")
+    # get("http://192.168.255.97:5000")
 
 if __name__ == '__main__':
     client = MongoClient("mongodb+srv://cluster0:IGse4gcJ9nNTj2VH@cluster0.gd0ksur.mongodb.net/admin?replicaSet=atlas-13msyn-shard-0&readPreference=primary&srvServiceName=mongodb&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1");
