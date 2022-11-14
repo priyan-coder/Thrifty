@@ -1,30 +1,29 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
+import { mount, shallow, configure } from 'enzyme';
+import CartIcon from './index';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-import Login from './index';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-
 configure({ adapter: new Adapter() });
-describe('Login component', () => {
-  const defaultFormFields = {
-    email: '',
-    password: '',
-  };
-  const mockStore = configureStore();
-  let store;
+describe('CartIcon component', () => {
   let wrapper;
+  let store;
+  const mockStore = configureStore();
+  const initialState = {
+    isCartOpen: false,
+    cartItems: [],
+  };
 
   beforeEach(() => {
-    store = mockStore(defaultFormFields);
+    store = mockStore({ cart: { ...initialState } });
     wrapper = shallow(
       <Provider store={store}>
-        <Login />
+        <CartIcon />
       </Provider>
     );
   });
 
-  it('should render Login component', () => {
+  it('should render CartIcon component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
