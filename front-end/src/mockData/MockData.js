@@ -29,6 +29,7 @@ export const categories = [
 const jeweleryProducts = [
   {
     id: 5,
+    user: 'john@gmail.com',
     name: "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
     price: 695,
     description:
@@ -43,6 +44,7 @@ const jeweleryProducts = [
   },
   {
     id: 6,
+    user: 'john@gmail.com',
     name: 'Solid Gold Petite Micropave ',
     price: 168,
     description:
@@ -57,6 +59,7 @@ const jeweleryProducts = [
   },
   {
     id: 7,
+    user: 'john@gmail.com',
     name: 'White Gold Plated Princess',
     price: 9.99,
     description:
@@ -71,6 +74,7 @@ const jeweleryProducts = [
   },
   {
     id: 8,
+    user: 'john@gmail.com',
     name: 'Pierced Owl Rose Gold Plated Stainless Steel Double',
     price: 10.99,
     description:
@@ -88,6 +92,7 @@ const jeweleryProducts = [
 const womenProducts = [
   {
     id: 15,
+    user: 'john@gmail.com',
     name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
     price: 56.99,
     description:
@@ -101,6 +106,7 @@ const womenProducts = [
   },
   {
     id: 16,
+    user: 'john@gmail.com',
     name: "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
     price: 29.95,
     description:
@@ -114,6 +120,7 @@ const womenProducts = [
   },
   {
     id: 17,
+    user: 'john@gmail.com',
     name: 'Rain Jacket Women Windbreaker Striped Climbing Raincoats',
     price: 39.99,
     description:
@@ -127,6 +134,7 @@ const womenProducts = [
   },
   {
     id: 18,
+    user: 'john@gmail.com',
     name: "MBJ Women's Solid Short Sleeve Boat Neck V ",
     price: 9.85,
     description:
@@ -140,6 +148,7 @@ const womenProducts = [
   },
   {
     id: 19,
+    user: 'john@gmail.com',
     name: "Opna Women's Short Sleeve Moisture",
     price: 7.95,
     description:
@@ -153,6 +162,7 @@ const womenProducts = [
   },
   {
     id: 20,
+    user: 'john@gmail.com',
     name: 'DANVOUY Womens T Shirt Casual Cotton Short',
     price: 12.99,
     description:
@@ -169,6 +179,7 @@ const womenProducts = [
 const menProducts = [
   {
     id: 1,
+    user: 'john@gmail.com',
     name: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
     price: 109.95,
     description:
@@ -182,6 +193,7 @@ const menProducts = [
   },
   {
     id: 2,
+    user: 'john@gmail.com',
     name: 'Mens Casual Premium Slim Fit T-Shirts ',
     price: 22.3,
     description:
@@ -196,6 +208,7 @@ const menProducts = [
   },
   {
     id: 3,
+    user: 'john@gmail.com',
     name: 'Mens Cotton Jacket',
     price: 55.99,
     description:
@@ -209,6 +222,7 @@ const menProducts = [
   },
   {
     id: 4,
+    user: 'john@gmail.com',
     name: 'Mens Casual Slim Fit',
     price: 15.99,
     description:
@@ -225,6 +239,7 @@ const menProducts = [
 const electronicProducts = [
   {
     id: 9,
+    user: 'john@gmail.com',
     name: 'WD 2TB Elements Portable External Hard Drive - USB 3.0 ',
     price: 64,
     description:
@@ -238,6 +253,7 @@ const electronicProducts = [
   },
   {
     id: 10,
+    user: 'john@gmail.com',
     name: 'SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s',
     price: 109,
     description:
@@ -251,6 +267,7 @@ const electronicProducts = [
   },
   {
     id: 11,
+    user: 'john@gmail.com',
     name: 'Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5',
     price: 109,
     description:
@@ -264,6 +281,7 @@ const electronicProducts = [
   },
   {
     id: 12,
+    user: 'john@gmail.com',
     name: 'WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive',
     price: 114,
     description:
@@ -277,6 +295,7 @@ const electronicProducts = [
   },
   {
     id: 13,
+    user: 'john@gmail.com',
     name: 'Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin',
     price: 599,
     description:
@@ -290,6 +309,7 @@ const electronicProducts = [
   },
   {
     id: 14,
+    user: 'john@gmail.com',
     name: 'Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ',
     price: 999.99,
     description:
