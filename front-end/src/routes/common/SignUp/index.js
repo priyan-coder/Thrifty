@@ -60,7 +60,7 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
-      handleOpenSnackbar(true);
+      handleOpenSnackbar();
       return;
     }
     console.log(formFields);

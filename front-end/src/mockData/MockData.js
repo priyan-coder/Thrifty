@@ -268,6 +268,13 @@ export const allReviews = {
       comment: 'Product was delivered in good condition!',
       madeByUserName: 'JosephStones',
       madeByUserId: 567
+    },
+    {
+      id: 99900,
+      ratingValue: 5,
+      comment: 'Product felt smooth!',
+      madeByUserName: 'Janice Teo',
+      madeByUserId: 770
     }
   ]
 };
