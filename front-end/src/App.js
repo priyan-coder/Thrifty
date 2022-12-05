@@ -6,6 +6,7 @@ import SignUp from './routes/common/SignUp';
 import Checkout from './routes/buyer/Checkout';
 import ProductPage from './routes/buyer/ProductPage';
 import SellerReviewsPage from './routes/seller/SellerReviewsPage';
+import CheckoutReviewsPage from './routes/buyer/CheckoutReviewsPage';
 import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route index={true} element={<Home />} />
         <Route path="sell" element={<SellerDashboard />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="review" element={<CheckoutReviewsPage />} />
         <Route path="shop/:category" element={<ProductPage />} />
         <Route
           path="shop/:category/:userName/:userId"

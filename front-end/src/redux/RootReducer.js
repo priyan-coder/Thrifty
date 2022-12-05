@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import UserReducer from './User/UserReducer';
 import CartReducer from './Cart/CartReducer';
 import SalesReducer from './Sales/SalesReducer';
+import ReviewsReducer from './Reviews/ReviewsReducer';
 // The root reducer is an overall reducer
 // that combines all the reducers which we use
 // Using combineReducers we create the root reducer object
@@ -9,7 +10,8 @@ import SalesReducer from './Sales/SalesReducer';
 const RootReducer = combineReducers({
   user: UserReducer,
   cart: CartReducer,
-  sales: SalesReducer
+  sales: SalesReducer,
+  reviews: ReviewsReducer
 });
 
 export default RootReducer;
