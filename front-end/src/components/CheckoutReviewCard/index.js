@@ -44,8 +44,8 @@ const CheckoutReviewCard = ({ productReviewTodo }) => {
     id: uuidv4(),
     ratingValue: 2,
     comment: '',
-    madeByUserName: currentUser.displayName || 'john',
-    madeByUserId: currentUser.id || 12333
+    madeByUserName: currentUser.displayName,
+    madeByUserId: currentUser.id
   };
 
   const [completedReview, setCompletedReview] = useState(
