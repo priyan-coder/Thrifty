@@ -21,12 +21,12 @@ class Login():
         return {"is_current_user" : False, "user_info" : None}
 
 
+
     @staticmethod
-    def sign_up(firstname,lastname,email_id,password,usertype):
+    def sign_up(firstname,email_id,password):
         resp = {}
-        if firstname.strip() != '' and lastname!= '' and password!= '' and usertype!= '':
-            docs = MongoUtils.get_docs_from_mongo(query = { "Email_id" : email_id, "First_name" : firstname,
-                                                            "Last_name" : lastname,"User_type":usertype},
+        if firstname.strip() != '' and password!= '' and email_id != '':
+            docs = MongoUtils.get_docs_from_mongo(query = { "Email_id" : email_id, "User_name" : firstname},
                                            collection_name = "users",
                                            db_name = "thriftstore")
             if len(docs):
@@ -35,7 +35,7 @@ class Login():
                 doc_to_insert = {}
                 doc_id = ObjectId()
                 doc_to_insert["_id"] = doc_id
-                doc_to_insert["First_name"] = firstname
+                doc_to_insert["User_name"] = firstname
                 doc_to_insert['Email_id'] = email_id
                 doc_to_insert['Password'] = password
                 doc_to_insert['User_id'] = str(doc_id)
