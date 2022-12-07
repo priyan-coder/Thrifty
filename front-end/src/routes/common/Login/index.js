@@ -6,7 +6,8 @@ import React, { useRef, useState } from 'react';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
 import SetCurrentUser from '../../../redux/User/UserAction';
 import { useDispatch } from 'react-redux';
-import { getData } from '../../../tools/ApiHandler';
+import { postData } from '../../../tools/ApiHandler';
+import { useNavigate } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 // import { SelectCurrentUser } from '../../../redux/User/UserSelector';
 const Login = () => {
@@ -17,6 +18,12 @@ const Login = () => {
   // dispatch passes the action object to the root reducer which inturn sends the action
   // object to ever single reducer function
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const goToCheckoutHandler = () => {
+    navigate('/home');
+  };
+
   const defaultFormFields = {
     email: '',
     password: ''
@@ -43,12 +50,22 @@ const Login = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(SetCurrentUser(formFields));
+    const endpoint = 'http://localhost:8080/login';
+    const { email, password } = formFields;
+    const dataToSend = JSON.stringify({ email_id: email, password: password });
+    const resp = await postData(endpoint, dataToSend);
     resetFormFields();
     setEmailValid(false);
     setPasswordValid(false);
+    if (resp.is_current_user) {
+      console.log(resp);
+      dispatch(SetCurrentUser(resp.user_info[0]));
+      goToCheckoutHandler();
+    } else {
+      window.alert('Please Sign Up!');
+    }
   };
   return (
     <FormContainer>
