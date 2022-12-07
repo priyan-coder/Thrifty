@@ -27,7 +27,7 @@ class Login():
     def sign_up(firstname,email_id,password):
         resp = {}
         if firstname.strip() != '' and password!= '' and email_id != '':
-            docs = MongoUtils.get_docs_from_mongo(query = { "Email_id" : email_id, "User_name" : firstname},
+            docs = MongoUtils.get_docs_from_mongo(query = { "Email_id" : email_id},
                                            collection_name = "users",
                                            db_name = "thriftstore")
             if len(docs):
