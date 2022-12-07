@@ -12,8 +12,9 @@ class Login():
 
         if email_id and password:
             query = { "Email_id" : email_id, "Password" : password }
+            projections = { "_id" : 0}
             print(query)
-            docs = MongoUtils.get_docs_from_mongo(query = query,
+            docs = MongoUtils.get_docs_from_mongo(query = query, projections = projections,
                                            collection_name = "users",
                                            db_name = "thriftstore")
             if len(docs):
