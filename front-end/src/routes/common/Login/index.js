@@ -6,6 +6,7 @@ import React, { useRef, useState } from 'react';
 import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
 import SetCurrentUser from '../../../redux/User/UserAction';
 import { useDispatch } from 'react-redux';
+import { getData } from '../../../tools/ApiHandler';
 // import { useSelector } from 'react-redux';
 // import { SelectCurrentUser } from '../../../redux/User/UserSelector';
 const Login = () => {
