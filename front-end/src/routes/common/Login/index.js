@@ -20,7 +20,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const goToCheckoutHandler = () => {
+  const goToHomeHandler = () => {
     navigate('/home');
   };
 
@@ -62,7 +62,7 @@ const Login = () => {
     if (resp.is_current_user) {
       console.log(resp);
       dispatch(SetCurrentUser(resp.user_info[0]));
-      goToCheckoutHandler();
+      goToHomeHandler();
     } else {
       window.alert('Please Sign Up!');
     }

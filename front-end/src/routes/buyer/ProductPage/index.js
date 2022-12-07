@@ -1,12 +1,27 @@
 import ProductCard from '../../../components/ProductCard';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { allProducts } from '../../../mockData/MockData';
-import { Fragment, useState } from 'react';
+// import { allProducts } from '../../../mockData/MockData';
+import { Fragment, useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
+import { postData } from '../../../tools/ApiHandler';
+
 const ProductPage = () => {
   const { category } = useParams();
-  const products = allProducts[category];
+  const [products, setProducts] = useState([]);
+  const fetchData = async (category) => {
+    const endpoint = 'http://localhost:8080/category_search';
+    console.log(category);
+    const dataToSend = JSON.stringify({ category });
+    const res = await postData(endpoint, dataToSend);
+    console.log(res);
+    setProducts(res);
+  };
+
+  useEffect(() => {
+    fetchData(category);
+  }, [category]);
+
   const [searchInput, setSearchInput] = useState('');
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchInput.toLowerCase())

@@ -6,6 +6,8 @@ import { ReactComponent as CrwnLogo } from '../../../assets/crown.svg';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { v4 as uuidv4 } from 'uuid';
+import { postData } from '../../../tools/ApiHandler';
+import { useNavigate } from 'react-router-dom';
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -17,6 +19,12 @@ const SignUp = () => {
     email: '',
     password: '',
     confirmPassword: ''
+  };
+
+  const navigate = useNavigate();
+
+  const goToLogin = () => {
+    navigate('/');
   };
 
   const [formFields, setFormFields] = useState(defaultFormFields);
@@ -58,17 +66,30 @@ const SignUp = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    const { displayName, email, password, confirmPassword } = formFields;
     event.preventDefault();
     if (password !== confirmPassword) {
       handleOpenSnackbar();
       return;
     }
-    console.log(formFields);
-    resetFormFields();
-    setNameValid(false);
-    setEmailValid(false);
-    setPasswordValid(false);
+    const endpoint = 'http://localhost:8080/sign_up';
+    const dataToSend = JSON.stringify({
+      displayName,
+      email_id: email,
+      password: password
+    });
+    const resp = await postData(endpoint, dataToSend);
+    console.log(resp);
+    if (resp.created_new_user) {
+      resetFormFields();
+      setNameValid(false);
+      setEmailValid(false);
+      setPasswordValid(false);
+      goToLogin();
+    } else {
+      window.alert('Unable to Sign Up!');
+    }
   };
 
   return (

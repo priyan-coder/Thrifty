@@ -7,6 +7,7 @@ import CartDropdown from '../../../components/CartDropdown';
 import { SelectIsCartOpen } from '../../../redux/Cart/CartSelector';
 import styled from 'styled-components';
 import ReviewBadge from '../../../components/ReviewBadge';
+import SignOutIcon from '../../../components/SignOutIcon';
 
 // Outlet renders the nested components between the <Route></Route>
 // Navigation Bar Persists for all routes -> NavigationContainer
@@ -19,6 +20,9 @@ const NavigationBar = () => {
           <CrwnLogo />
         </LogoContainer>
         <NavLinks>
+          <NavLink to="/">
+            <SignOutIcon />
+          </NavLink>
           <NavLink to="/home/sell">SELL</NavLink>
           <NavLink to="/home/review">
             <ReviewBadge />
