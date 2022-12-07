@@ -260,14 +260,15 @@ const electronicProducts = [
 ];
 
 // map userId of user to reviews he has received
+// key is the seller who received the review
 export const allReviews = {
   123: [
     {
-      id: 241,
+      id: 241, // reviewId created at the front end
       ratingValue: 3,
       comment: 'Product was delivered in good condition!',
-      madeByUserName: 'JosephStones',
-      madeByUserId: 567
+      madeByUserName: 'JosephStones', // displayName of user who submitted this review
+      madeByUserId: 567 // userId of the user who submitted this review
     },
     {
       id: 99900,
@@ -285,3 +286,123 @@ export const allProducts = {
   women: [...womenProducts],
   men: [...menProducts]
 };
+
+// // This is basically used so that I can set up the user state and manage on the front-end
+// const response = {
+//   // user details object
+//   currentUser: {
+//     displayName: 'priyan',
+//     email: 'bxr261@case.edu',
+//     id: '318c66e6-1154-4265-8a2e-7940aeec5487' // user id
+//   },
+
+//   // an array of product objects
+//   cartItems: [
+//     {
+//       id: 13, // product id
+//       userName: 'JohnDoe',
+//       userId: 123,
+//       name: 'Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin',
+//       price: 599,
+//       description:
+//         '21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz',
+//       category: 'electronics',
+//       imageUrl: 'https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg'
+//     },
+//     {
+//       id: 14,
+//       userName: 'JohnDoe',
+//       userId: 123,
+//       name: 'Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ',
+//       price: 999.99,
+//       description:
+//         '49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag',
+//       category: 'electronics',
+//       imageUrl: 'https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg'
+//     }
+//   ],
+
+//   // an array of product objects which indicate the sales posts which the user has created
+//   posts: [
+//     {
+//       id: 14, // product id
+//       userName: 'JohnDoe', // displayName of the current user who created this product
+//       userId: 123, // user id of the currentUser who created this product
+//       name: 'Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ',
+//       price: 999.99,
+//       description:
+//         '49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag',
+//       category: 'electronics',
+//       imageUrl: 'https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg'
+//     }
+//   ],
+
+//   // reviews left to be done by the user. An array of products which he ordered but did not do review for
+//   reviewsTodo: [
+//     {
+//       id: 14, // product id
+//       userName: 'JohnDoe', // displayName of the current user who created this product
+//       userId: 123, // user id of the currentUser who created this product
+//       name: 'Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ',
+//       price: 999.99,
+//       description:
+//         '49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag',
+//       category: 'electronics',
+//       imageUrl: 'https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg'
+//     }
+//   ]
+// };
+
+// const categoryResponse = {
+//   // the chosen category mapped to an array of product objects
+//   electronics: [
+//     {
+//       id: 14, // product id
+//       userName: 'JohnDoe', // displayName of the current user who created this product
+//       userId: 123, // user id of the currentUser who created this product
+//       name: 'Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ',
+//       price: 999.99,
+//       description:
+//         '49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag',
+//       category: 'electronics',
+//       imageUrl: 'https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg'
+//     }
+//   ]
+// };
+
+// const completedReviewByCurrentUser = {
+//   // the two ids below are user ids
+//   userIdOfReviewRecipient: userIdFromProductInfo, // sellerId: buyerId
+//   // the rest of this is the review. Map userIdOfReviewRecipient to the review
+//   id: 241, // reviewId to be created here in front-end
+//   ratingValue: 3,
+//   comment: 'Product was delivered in good condition!',
+//   madeByUserName: 'JosephStones', // currentUser who is logged in and made the review
+//   madeByUserId: 567 // currentUser who is logged in and made the review
+// };
+
+// const reviewsOfUser = {
+//   // the userId mapped to the array of review objects
+//   sellerUserId: [
+//     {
+//       id: 99900, // reviewId
+//       ratingValue: 5,
+//       comment: 'Product felt smooth!',
+//       madeByUserName: 'Janice Teo', // displayName of who created this review
+//       madeByUserId: 770 // userId of who created this review
+//     }
+//   ]
+// };
+
+// // adheres to a product format
+// const newProductCreatedByUser = {
+//   name: '',
+//   description: '',
+//   price: '',
+//   quantity: '',
+//   imageUrl: '',
+//   category: '',
+//   id: uuidv4(), // refers to the product id. created by me on front-end.
+//   userName: 'JohnDoe', // displayName of the current user who created this product
+//   userId: 123 // user id of the currentUser who created this product
+// };

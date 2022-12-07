@@ -16,13 +16,14 @@ const PostCreation = () => {
   const dispatch = useDispatch();
   const salesPosts = useSelector(SelectSalesPosts);
   const defaultFormFields = {
+    // remember to include userId and userName(displayName) of user
     name: '',
     description: '',
     price: '',
     quantity: '',
     imageUrl: '',
     category: '',
-    id: uuidv4()
+    id: uuidv4() // created by me on front-end
   };
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, description, price, quantity, imageUrl, category } = formFields;
