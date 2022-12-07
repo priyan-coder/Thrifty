@@ -96,6 +96,14 @@ class MongoUtils():
         collection = db.get_collection(db_name)
         collection.update(query, {'$set': {insert_key:insert_value}}, multi=True)
 
+    @staticmethod
+    def add_elements_to_array(query = None, insert_key = None, insert_value = None, collection_name = None, db_name=None):
+        mongo_util = MongoUtils.get_instance()
+        client = mongo_util.client
+        db = client.get_database(collection_name)
+        collection = db.get_collection(db_name)
+        collection.update(query, {'$push': {insert_key:insert_value}})
+
 
     @staticmethod
     def insert_docs(docs_to_insert = None, collection_name = None, db_name=None):

@@ -58,19 +58,6 @@ class Controller():
     @app.route("/login", methods=[Constants.POST, Constants.GET, Constants.OPTIONS])
     def login(self,request=None):
 
-        '''
-        request = Controller.add_required_headers(request)
-        if request.method.decode(Constants.UTF_8, Constants.STRICT) == Constants.GET:
-            request_params = {
-                key.decode(Constants.UTF_8, Constants.STRICT): value[0].decode(Constants.UTF_8,
-                                                               Constants.STRICT)
-                for key, value in request.args.items()}
-        elif request.method.decode(Constants.UTF_8, Constants.STRICT) == Constants.OPTIONS:
-            return json.dumps({'success': 'ok'})
-        else:
-            request_params = json.loads(
-                request.content.read().decode(Constants.UTF_8, Constants.STRICT))
-        '''
         print("received request")
         request_params = Controller.decode_request(request)
 
@@ -84,30 +71,16 @@ class Controller():
     @app.route("/sign_up", methods=[Constants.POST, Constants.GET, Constants.OPTIONS])
     def sign_up(self,request=None):
 
-        '''
-        request = Controller.add_required_headers(request)
-        if request.method.decode(Constants.UTF_8, Constants.STRICT) == Constants.GET:
-            request_params = {
-                key.decode(Constants.UTF_8, Constants.STRICT): value[0].decode(Constants.UTF_8,
-                                                               Constants.STRICT)
-                for key, value in request.args.items()}
-        elif request.method.decode(Constants.UTF_8, Constants.STRICT) == Constants.OPTIONS:
-            return json.dumps({'success': 'ok'})
-        else:
-            request_params = json.loads(
-                request.content.read().decode(Constants.UTF_8, Constants.STRICT))
-        '''
         print("received request")
         request_params = Controller.decode_request(request)
 
-        first_name = request_params.get(Constants.FIRSTNAME) if Constants.FIRSTNAME in request_params else None
-        last_name = request_params.get(Constants.LASTNAME) if Constants.LASTNAME in request_params else None
+        first_name = request_params.get("displayName") if "displayName" in request_params else None
         email = request_params.get(Constants.EMAIL_ID) if Constants.EMAIL_ID in request_params else None
         password = request_params.get(Constants.PASSWORD) if Constants.PASSWORD in request_params else None
-        usertype = request_params.get(Constants.USER_TYPE) if Constants.USER_TYPE in request_params else None
+        #usertype = request_params.get(Constants.USER_TYPE) if Constants.USER_TYPE in request_params else None
 
         login = Login()
-        resp = login.sign_up(firstname=first_name,lastname=last_name,email_id=email,password=password,usertype=usertype)
+        resp = login.sign_up(firstname=first_name,email_id=email,password=password)
         return json.dumps(resp)
 
 
@@ -142,6 +115,31 @@ class Controller():
         category = request_params.get("category") if "category" in request_params else None
         resp = Search.get_search_results(category = category)
         return  json.dumps(resp)
+
+
+    @app.route("/user_reviews",methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
+    def user_reviews(self, request = None):
+        request_params = Controller.decode_request(request)
+        user_id = request_params.get("user_id") if "user_id" in request_params else None
+        resp = User.get_user_reviews(user_id)
+        return json.dumps(resp)
+
+    @app.route("/update_reviews",methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
+    def update_user_reviews(self, request = None):
+        request_params = Controller.decode_request(request)
+        reviews = request_params.get("allReviews") if "allReviews" in request_params else None
+        resp = User.update_user_reviews(reviews)
+        return json.dumps(resp)
+
+    @app.route("/update_user_state",methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
+    def update_user_state(self, request = None):
+        request_params = Controller.decode_request(request)
+        User_id = request_params.get("User_id") if "User_id" in request_params else None
+        cartItems = request_params.get("cartItems") if "cartItems" in request_params else None
+        reviewsToDo = request_params.get("reviewsToDo") if "reviewsToDo" in request_params else None
+        resp = User.log_user_state(User_id,cartItems,reviewsToDo)
+        return json.dumps(resp)
+
 
 
 

@@ -15,14 +15,20 @@ class Testing(unittest.TestCase):
         :return:
         '''
         self.assertEqual(Login.login_user("xyz@blabla.com","qwertyuiop"),{"is_current_user" : True})
-        self.assertEqual(Login.login_user("abc@blabla.com","qwertyuiop"),{"is_current_user" : False})
+
+    def test_login_11(self):
+        '''
+        Unit test case 11 to test User Login
+        :return:
+        '''
+        self.assertEqual(Login.login_user("abc@blablaaa.com","qwertyuiop"),{"is_current_user" : False})
 
     def test_login_2(self):
         '''
         Unit test case 2 to test User Login
         :return:
         '''
-        self.assertNotEqual(Login.login_user("abc@blabla.com","qwertyuiop"),{"is_current_user" : True})
+        self.assertNotEqual(Login.login_user("abc@blabbbla.com","qwertyuiop"),{"is_current_user" : True})
 
 
     def test_signup_1(self):
@@ -37,7 +43,7 @@ class Testing(unittest.TestCase):
         Unit test case 2 to test User SignUp
         :return:
         '''
-        self.assertEqual(Login.sign_up("zain","Ken","xyz@blabla.com","qwertyuiop","buyer"),{"created_new_user" : True})
+        self.assertEqual(Login.sign_up("zainn","Keen","xyz@bllabla.com","qwertyuiop","seller"),{"created_new_user" : True})
 
 
     def test_search_1(self):
@@ -59,7 +65,7 @@ class Testing(unittest.TestCase):
         Unit test case 2 to test User SignUp
         :return:
         '''
-        self.assertEqual(User.add_sale_posts())
+        self.assertNotIsInstance(Search.get_search_results("pants"),list,"Is not an instace of list")
 
 if __name__ == '__main__':
     unittest.main()
