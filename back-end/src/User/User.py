@@ -31,13 +31,18 @@ class User():
     def add_sale_posts(user_id=None,products=None):
         if user_id is not None:
             query = {"User_id" : user_id}
+
+            doc_id = ObjectId()
+            products['product_id'] = str(doc_id)
+            
             MongoUtils.add_elements_to_array(query=query, insert_key="Posts", insert_value=products,
                                            collection_name="users", db_name="thriftstore")
-
+            products["_id"] = doc_id
             MongoUtils.insert_docs(products, collection_name="products",db_name="thriftstore")
 
             return {"updated_in_products" : True}
         return {"updated_in_products" : False}
+
 
 
     @staticmethod
