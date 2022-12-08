@@ -105,7 +105,7 @@ class Controller():
     def add_sale_posts(self,request=None):
         request_params = Controller.decode_request(request)
         user_id = request_params.get("user_id") if "user_id" in request_params else None
-        products = request_params.get("products")
+        products = request_params.get("product")
         resp = User.add_sale_posts(user_id,products)
         return json.dumps(resp)
 
