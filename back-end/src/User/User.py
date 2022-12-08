@@ -85,7 +85,7 @@ class User():
         User_id: 567 // currentUser who is logged in and made the review
         }
         '''
-         if reviews is not None and isinstance(reviews, dict):
+        if reviews is not None and isinstance(reviews, dict):
             query = {"User_id" : reviews.get("sellerId")}
             insert_value = {'$each' : [reviews], '$position': -1}
             MongoUtils.add_elements_to_array(query=query, insert_key="userReviews", insert_value=insert_value,
