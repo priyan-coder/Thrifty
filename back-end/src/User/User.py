@@ -34,12 +34,14 @@ class User():
 
             doc_id = ObjectId()
             products['product_id'] = str(doc_id)
-            
+            insert_value = {'$each' : [products], '$position': -1}
+
             MongoUtils.add_elements_to_array(query=query, insert_key="Posts", insert_value=products,
                                            collection_name="users", db_name="thriftstore")
             products["_id"] = doc_id
             MongoUtils.insert_docs(products, collection_name="products",db_name="thriftstore")
 
+            del products["_id"]
             return {"updated_in_products" : True, "product" : products}
         return {"updated_in_products" : False, "product" : {}}
 
