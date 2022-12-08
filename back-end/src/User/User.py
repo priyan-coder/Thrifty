@@ -31,7 +31,7 @@ class User():
     def add_sale_posts(user_id=None,products=None):
         if user_id is not None:
             query = {"User_id" : user_id}
-            MongoUtils.update_docs_wth_key(query=query, insert_key="sale_products", insert_value=products,
+            MongoUtils.add_elements_to_array(query=query, insert_key="Posts", insert_value=products,
                                            collection_name="users", db_name="thriftstore")
 
             MongoUtils.insert_docs(products, collection_name="products",db_name="thriftstore")
