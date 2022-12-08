@@ -8,6 +8,10 @@ import SetCurrentUser from '../../../redux/User/UserAction';
 import { useDispatch } from 'react-redux';
 import { postData } from '../../../tools/ApiHandler';
 import { useNavigate } from 'react-router-dom';
+import { SetReviewsToDo } from '../../../redux/Reviews/ReviewsAction';
+import { SetCartItems } from '../../../redux/Cart/CartAction';
+import { SetSalesPost } from '../../../redux/Sales/SalesAction';
+
 // import { useSelector } from 'react-redux';
 // import { SelectCurrentUser } from '../../../redux/User/UserSelector';
 const Login = () => {
@@ -62,6 +66,9 @@ const Login = () => {
     if (resp.is_current_user) {
       console.log(resp);
       dispatch(SetCurrentUser(resp.user_info[0]));
+      dispatch(SetReviewsToDo(resp.user_info[0].reviewsToDo));
+      dispatch(SetCartItems(resp.user_info[0].cartItems));
+      dispatch(SetSalesPost(resp.user_info[0].posts));
       goToHomeHandler();
     } else {
       window.alert('Please Sign Up!');

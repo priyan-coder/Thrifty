@@ -18,6 +18,10 @@ const addProducts = (prevReviewsToDo, reviewsToAdd) => {
   return arrayUnique(prevReviewsToDo.concat(reviewsToAdd));
 };
 
+export const SetReviewsToDo = (reviewsToDo) => {
+  return CreateAction(ReviewsActionTypes.SET_REVIEWS_TODO, reviewsToDo);
+};
+
 export const AddReviewsToReviewsToDo = (prevReviewsToDo, reviewsToAdd) => {
   const newReviewsToDo = addProducts(prevReviewsToDo, reviewsToAdd);
   return CreateAction(ReviewsActionTypes.SET_REVIEWS_TODO, newReviewsToDo);

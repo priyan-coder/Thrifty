@@ -8,11 +8,13 @@ import { SelectIsCartOpen } from '../../../redux/Cart/CartSelector';
 import styled from 'styled-components';
 import ReviewBadge from '../../../components/ReviewBadge';
 import SignOutIcon from '../../../components/SignOutIcon';
+import { SelectCurrentUser } from '../../../redux/User/UserSelector';
 
 // Outlet renders the nested components between the <Route></Route>
 // Navigation Bar Persists for all routes -> NavigationContainer
 const NavigationBar = () => {
   const isCartOpen = useSelector(SelectIsCartOpen);
+  const currentUser = useSelector(SelectCurrentUser);
   return (
     <Fragment>
       <NavigationContainer>
@@ -20,6 +22,7 @@ const NavigationBar = () => {
           <CrwnLogo />
         </LogoContainer>
         <NavLinks>
+          <p style={{ color: 'white' }}>Welcome {currentUser.User_name}!</p>
           <NavLink to="/">
             <SignOutIcon />
           </NavLink>

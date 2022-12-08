@@ -76,5 +76,9 @@ export const SetCartEmpty = () => {
   return CreateAction(CartActionTypes.SET_CART_ITEMS, []);
 };
 
+export const SetCartItems = (cartItems) => {
+  return CreateAction(CartActionTypes.SET_CART_ITEMS, cartItems);
+};
+
 export const SetIsCartOpen = (boolean) =>
   CreateAction(CartActionTypes.SET_IS_CART_OPEN, boolean);

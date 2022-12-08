@@ -10,28 +10,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { MarkReviewAsDone } from '../../redux/Reviews/ReviewsAction';
 import { SelectReviewsTodo } from '../../redux/Reviews/ReviewsSelector';
 import { useState } from 'react';
-
-/* Each completed review will be an object like this:
-    {
-      id: 241, // reviewId
-      ratingValue: 3,
-      comment: 'Product was delivered in good condition!',
-      madeByUserName: 'JosephStones',
-      madeByUserId: 567
-    }
-
-    Send to backend:
-        {   
-            userIdOfReviewRecipient: userIdFromProductInfo
-            // the rest of this is the review. Map userIdOfReviewRecipient to the review
-            id: 241, // reviewId to be created here in front-end
-            ratingValue: 3,
-            comment: 'Product was delivered in good condition!',
-            madeByUserName: 'JosephStones', // currentUser who is logged in and made the review
-            madeByUserId: 567 // currentUser who is logged in and made the review
-                                    
-        }
-*/
+import { postData } from '../../tools/ApiHandler';
 
 // review to be done by current User based on the products he made a payment for
 const CheckoutReviewCard = ({ productReviewTodo }) => {
@@ -53,9 +32,30 @@ const CheckoutReviewCard = ({ productReviewTodo }) => {
   );
   const { ratingValue, comment } = completedReview;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const {
+      userIdOfReviewRecipient,
+      id,
+      ratingValue,
+      comment,
+      madeByUserName,
+      madeByUserId
+    } = completedReview;
+
+    const dataToSend = JSON.stringify({
+      sellerId: userIdOfReviewRecipient,
+      reviewId: id,
+      ratingValue,
+      comment,
+      userName: madeByUserName,
+      User_id: madeByUserId
+    });
+
     console.log(completedReview);
+    const endpoint = 'http://localhost:8080/update_reviews';
+    const res = await postData(endpoint, dataToSend);
+    console.log(res);
     dispatch(MarkReviewAsDone(prevReviewsToDo, productReviewTodo));
   };
 

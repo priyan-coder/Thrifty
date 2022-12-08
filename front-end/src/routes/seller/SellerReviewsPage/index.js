@@ -2,16 +2,32 @@ import styled from 'styled-components';
 import ReviewCard from '../../../components/ReviewCard';
 import { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
-import { allReviews } from '../../../mockData/MockData';
+// import { allReviews } from '../../../mockData/MockData';
+import { useState, useEffect } from 'react';
+import { postData } from '../../../tools/ApiHandler';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
 const SellerReviewsPage = () => {
   // logged in user wants to view the reviews of the chosenUserName
   const { userName, userId } = useParams();
+  const [reviewsOfUser, setReviewsOfUser] = useState([]);
+
+  const fetchData = async (userId) => {
+    const endpoint = 'http://localhost:8080/update_reviews';
+    console.log(userId);
+    const dataToSend = JSON.stringify({ user_id: userId });
+    const res = await postData(endpoint, dataToSend);
+    console.log(res);
+    setReviewsOfUser(res);
+  };
+
+  useEffect(() => {
+    fetchData(userId);
+  }, [userId]);
 
   // each review is an object like {id: "", ratingValue: 0, comment: "", madeByUserName: ""}
   // get the reviews made by other users of the chosenUserName
-  const reviewsOfUser = allReviews[userId];
+  // const reviewsOfUser = allReviews[userId];
   return (
     <Fragment>
       <Title>
