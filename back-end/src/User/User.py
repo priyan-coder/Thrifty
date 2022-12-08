@@ -40,8 +40,8 @@ class User():
             products["_id"] = doc_id
             MongoUtils.insert_docs(products, collection_name="products",db_name="thriftstore")
 
-            return {"updated_in_products" : True}
-        return {"updated_in_products" : False}
+            return {"updated_in_products" : True, "product" : products}
+        return {"updated_in_products" : False, "product" : {}}
 
 
 
