@@ -15,16 +15,16 @@ import { postData } from '../../tools/ApiHandler';
 // review to be done by current User based on the products he made a payment for
 const CheckoutReviewCard = ({ productReviewTodo }) => {
   const dispatch = useDispatch();
-  const { name, userName, userId } = productReviewTodo;
+  const { name, User_name, User_id } = productReviewTodo;
   const currentUser = useSelector(SelectCurrentUser);
   const prevReviewsToDo = useSelector(SelectReviewsTodo);
   const defaultReviewFormFields = {
-    userIdOfReviewRecipient: userId,
-    id: uuidv4(),
+    sellerId: User_id,
+    reviewId: uuidv4(),
     ratingValue: 2,
     comment: '',
-    madeByUserName: currentUser.displayName,
-    madeByUserId: currentUser.id
+    userName: currentUser.User_name,
+    User_id: currentUser.User_id
   };
 
   const [completedReview, setCompletedReview] = useState(
@@ -34,24 +34,8 @@ const CheckoutReviewCard = ({ productReviewTodo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {
-      userIdOfReviewRecipient,
-      id,
-      ratingValue,
-      comment,
-      madeByUserName,
-      madeByUserId
-    } = completedReview;
 
-    const dataToSend = JSON.stringify({
-      sellerId: userIdOfReviewRecipient,
-      reviewId: id,
-      ratingValue,
-      comment,
-      userName: madeByUserName,
-      User_id: madeByUserId
-    });
-
+    const dataToSend = JSON.stringify({ ...completedReview });
     console.log(completedReview);
     const endpoint = 'http://localhost:8080/update_reviews';
     const res = await postData(endpoint, dataToSend);
@@ -62,9 +46,9 @@ const CheckoutReviewCard = ({ productReviewTodo }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
-        <p>Review for: {userName}</p>
+        <p>Review for: {User_name}</p>
         <p>
-          You purchased {name} from {userName}.
+          You purchased {name} from {User_name}.
         </p>
         <Rating
           name="rating"

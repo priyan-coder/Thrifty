@@ -9,21 +9,21 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 
 const SellerReviewsPage = () => {
   // logged in user wants to view the reviews of the chosenUserName
-  const { userName, userId } = useParams();
+  const { userName, User_id } = useParams();
   const [reviewsOfUser, setReviewsOfUser] = useState([]);
 
-  const fetchData = async (userId) => {
-    const endpoint = 'http://localhost:8080/update_reviews';
-    console.log(userId);
-    const dataToSend = JSON.stringify({ user_id: userId });
+  const fetchData = async (User_id) => {
+    const endpoint = 'http://localhost:8080/user_reviews';
+    console.log(User_id);
+    const dataToSend = JSON.stringify({ user_id: User_id });
     const res = await postData(endpoint, dataToSend);
     console.log(res);
     setReviewsOfUser(res);
   };
 
   useEffect(() => {
-    fetchData(userId);
-  }, [userId]);
+    fetchData(User_id);
+  }, [User_id]);
 
   // each review is an object like {id: "", ratingValue: 0, comment: "", madeByUserName: ""}
   // get the reviews made by other users of the chosenUserName
@@ -36,7 +36,7 @@ const SellerReviewsPage = () => {
       <ReviewsContainer>
         {reviewsOfUser &&
           reviewsOfUser.map((review) => (
-            <ReviewCard key={review.id} review={review} />
+            <ReviewCard key={review.reviewId} review={review} />
           ))}
       </ReviewsContainer>
     </Fragment>

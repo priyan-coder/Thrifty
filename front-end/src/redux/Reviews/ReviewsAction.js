@@ -30,7 +30,7 @@ export const AddReviewsToReviewsToDo = (prevReviewsToDo, reviewsToAdd) => {
 // remove a product from reviewsTodo because user has completed the review for it
 export const MarkReviewAsDone = (prevReviewsToDo, reviewToRemove) => {
   const newReviewsToDo = prevReviewsToDo.filter(
-    (review) => review.iproduct_id !== reviewToRemove.product_id
+    (review) => review.product_id !== reviewToRemove.product_id
   );
   return CreateAction(ReviewsActionTypes.SET_REVIEWS_TODO, newReviewsToDo);
 };

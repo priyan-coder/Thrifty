@@ -409,3 +409,11 @@ export const allProducts = {
 //   userName: 'JohnDoe', // displayName of the current user who created this product
 //   userId: 123 // user id of the currentUser who created this product
 // };
+
+// const user = {
+//   Email_id: 'sxg1238@case.edu',
+//   Password: '123456',
+//   Posts: [],
+//   User_id: '63916fc100841a8e26dad192',
+//   User_name: 'Shanthan'
+// };

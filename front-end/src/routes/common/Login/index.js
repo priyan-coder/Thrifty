@@ -68,7 +68,7 @@ const Login = () => {
       dispatch(SetCurrentUser(resp.user_info[0]));
       dispatch(SetReviewsToDo(resp.user_info[0].reviewsToDo));
       dispatch(SetCartItems(resp.user_info[0].cartItems));
-      dispatch(SetSalesPost(resp.user_info[0].posts));
+      dispatch(SetSalesPost(resp.user_info[0].Posts));
       goToHomeHandler();
     } else {
       window.alert('Please Sign Up!');
