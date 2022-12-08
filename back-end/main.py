@@ -127,8 +127,8 @@ class Controller():
     @app.route("/update_reviews",methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
     def update_user_reviews(self, request = None):
         request_params = Controller.decode_request(request)
-        reviews = request_params.get("allReviews") if "allReviews" in request_params else None
-        resp = User.update_user_reviews(reviews)
+        #reviews = request_params.get("completedReview") if "completedReview" in request_params else None
+        resp = User.update_user_reviews(request_params)
         return json.dumps(resp)
 
     @app.route("/update_user_state",methods=[Constants.POST,Constants.GET, Constants.OPTIONS])
