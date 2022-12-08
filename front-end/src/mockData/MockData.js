@@ -1,3 +1,6 @@
+const menCategoryName = "men's clothing";
+const womenCategoryName = "women's clothing";
+
 export const categories = [
   {
     id: 1,
@@ -16,13 +19,13 @@ export const categories = [
     id: 3,
     title: 'women',
     imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-    route: 'shop/women'
+    route: `shop/${womenCategoryName}`
   },
   {
     id: 4,
     title: 'men',
     imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
-    route: 'shop/men'
+    route: `shop/${menCategoryName}`
   }
 ];
 
