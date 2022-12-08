@@ -1,5 +1,6 @@
 
 from utils.MongoUtils import MongoUtils
+from bson import ObjectId
 
 class User():
 
