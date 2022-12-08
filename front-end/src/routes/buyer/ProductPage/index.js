@@ -15,7 +15,7 @@ const ProductPage = () => {
     const dataToSend = JSON.stringify({ category });
     const res = await postData(endpoint, dataToSend);
     console.log(res);
-    setProducts(res);
+    setProducts(res.response);
   };
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const ProductPage = () => {
       <CategoryContainer>
         {filteredProducts &&
           filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.product_id} product={product} />
           ))}
       </CategoryContainer>
     </Fragment>

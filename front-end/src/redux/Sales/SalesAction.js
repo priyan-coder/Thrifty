@@ -3,7 +3,7 @@ import SalesActionTypes from './SalesActionTypes';
 
 const addSalesPost = (salesPosts, postToAdd) => {
   const existingSalesPost = salesPosts.find(
-    (salesPost) => salesPost.id === postToAdd.id
+    (salesPost) => salesPost.product_id === postToAdd.product_id
   );
   if (existingSalesPost) {
     return [...salesPosts];
@@ -11,7 +11,9 @@ const addSalesPost = (salesPosts, postToAdd) => {
   return [...salesPosts, { ...postToAdd }];
 };
 const removePost = (salesPosts, postToRemove) => {
-  return salesPosts.filter((salesPost) => salesPost.id !== postToRemove.id);
+  return salesPosts.filter(
+    (salesPost) => salesPost.product_id !== postToRemove.product_id
+  );
 };
 
 // Actions

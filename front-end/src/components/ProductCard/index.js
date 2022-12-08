@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import ReviewsRoundedIcon from '@mui/icons-material/ReviewsRounded';
 
 const ProductCard = ({ product }) => {
-  const { name, price, imageUrl, userName, userId } = product;
+  const { name, price, imageUrl, User_name, User_id } = product;
   const dispatch = useDispatch();
   const cartItems = useSelector(SelectCartItems);
   const navigate = useNavigate();
-  const onNavigateHandler = () => navigate(`${userName}/${userId}`);
+  const onNavigateHandler = () => navigate(`${User_name}/${User_id}`);
   const addProductToCart = () => dispatch(AddItemToCart(cartItems, product));
 
   return (

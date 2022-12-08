@@ -8,7 +8,7 @@ const arrayUnique = (array) => {
   var a = array.concat();
   for (var i = 0; i < a.length; ++i) {
     for (var j = i + 1; j < a.length; ++j) {
-      if (a[i].id === a[j].id) a.splice(j--, 1);
+      if (a[i].product_id === a[j].product_id) a.splice(j--, 1);
     }
   }
   return a;
@@ -30,7 +30,7 @@ export const AddReviewsToReviewsToDo = (prevReviewsToDo, reviewsToAdd) => {
 // remove a product from reviewsTodo because user has completed the review for it
 export const MarkReviewAsDone = (prevReviewsToDo, reviewToRemove) => {
   const newReviewsToDo = prevReviewsToDo.filter(
-    (review) => review.id !== reviewToRemove.id
+    (review) => review.iproduct_id !== reviewToRemove.product_id
   );
   return CreateAction(ReviewsActionTypes.SET_REVIEWS_TODO, newReviewsToDo);
 };

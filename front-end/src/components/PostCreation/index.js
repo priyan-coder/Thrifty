@@ -23,7 +23,7 @@ const PostCreation = () => {
     quantity: '',
     imageUrl: '',
     category: '',
-    id: uuidv4() // created by me on front-end
+    product_id: uuidv4() // created by me on front-end
   };
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, description, price, quantity, imageUrl, category } = formFields;
