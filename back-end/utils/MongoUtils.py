@@ -102,7 +102,7 @@ class MongoUtils():
         client = mongo_util.client
         db = client.get_database(collection_name)
         collection = db.get_collection(db_name)
-        collection.update(query, {'$push': {insert_key:insert_value}})
+        collection.update_one(query, {'$push': {insert_key:insert_value}})
 
 
     @staticmethod
