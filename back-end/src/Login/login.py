@@ -43,6 +43,7 @@ class Login():
                 doc_to_insert['cartItems'] = []
                 doc_to_insert['userReviews'] = []
                 doc_to_insert['reviewsToDo'] = []
+                doc_to_insert['Posts'] = []
                 MongoUtils.insert_docs(docs_to_insert=doc_to_insert, collection_name="users",db_name="thriftstore")
                 resp = {"created_new_user" : True}
         return resp
