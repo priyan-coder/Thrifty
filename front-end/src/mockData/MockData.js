@@ -417,3 +417,13 @@ export const allProducts = {
 //   User_id: '63916fc100841a8e26dad192',
 //   User_name: 'Shanthan'
 // };
+
+// {"user_id":"63916fc100841a8e26dad192",
+// "product":{"name":"Floral Shirt",
+//             "description":"Floral Shirt",
+//             "price":"10.00",
+//             "quantity":"4",
+//             "imageUrl":"https://cdn.pixabay.com/photo/2016/03/08/20/03/flag-1244649_1280.jpg",
+//             "category":"men"
+//           }
+// }

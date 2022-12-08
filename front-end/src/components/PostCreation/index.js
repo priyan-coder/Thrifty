@@ -6,24 +6,27 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import Autocomplete from '@mui/material/Autocomplete';
 import { SelectSalesPosts } from '../../redux/Sales/SalesSelector';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import Stack from '@mui/material/Stack';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
+import { SelectCurrentUser } from '../../redux/User/UserSelector';
+import { postData } from '../../tools/ApiHandler';
 const PostCreation = () => {
   const categoryOptions = ['jewelery', 'electronics', 'men', 'women'];
   // dispatch passes the action object to the root reducer which inturn sends the action
   // object to ever single reducer function
   const dispatch = useDispatch();
   const salesPosts = useSelector(SelectSalesPosts);
+  const currentUser = useSelector(SelectCurrentUser);
   const defaultFormFields = {
-    // remember to include userId and userName(displayName) of user
+    user_id: currentUser.User_id,
     name: '',
     description: '',
     price: '',
     quantity: '',
     imageUrl: '',
-    category: '',
-    product_id: uuidv4() // created by me on front-end
+    category: ''
+    // product_id: uuidv4() // created by me on front-end
   };
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, description, price, quantity, imageUrl, category } = formFields;
@@ -65,9 +68,26 @@ const PostCreation = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(AddSalesPost(salesPosts, formFields));
+    const endpoint = 'http://localhost:8080/add_sale_posts';
+    const { user_id, name, description, price, quantity, imageUrl, category } =
+      formFields;
+    const dataToSend = JSON.stringify({
+      user_id,
+      product: {
+        name,
+        description,
+        price,
+        quantity,
+        imageUrl,
+        category
+      }
+    });
+    console.log(dataToSend);
+    const res = await postData(endpoint, dataToSend);
+    console.log(res);
+    // dispatch(AddSalesPost(salesPosts, formFields));
     resetFormFields();
   };
   return (
