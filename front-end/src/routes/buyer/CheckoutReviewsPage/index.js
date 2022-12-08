@@ -12,7 +12,7 @@ const CheckoutReviewsPage = () => {
       <PendingReviewsContainer>
         {reviewsTodo.map((productForWhichReviewIsInTodo) => (
           <CheckoutReviewCard
-            key={productForWhichReviewIsInTodo.id}
+            key={productForWhichReviewIsInTodo.product_id}
             productReviewTodo={productForWhichReviewIsInTodo}
           />
         ))}

@@ -16,16 +16,18 @@ import { postData } from '../../tools/ApiHandler';
 const CheckoutReviewCard = ({ productReviewTodo }) => {
   const dispatch = useDispatch();
   const { name, User_name, User_id } = productReviewTodo;
+  console.log('user', User_id);
   const currentUser = useSelector(SelectCurrentUser);
   const prevReviewsToDo = useSelector(SelectReviewsTodo);
   const defaultReviewFormFields = {
-    sellerId: User_id,
     reviewId: uuidv4(),
+    sellerId: User_id,
     ratingValue: 2,
     comment: '',
     userName: currentUser.User_name,
     User_id: currentUser.User_id
   };
+  console.log(defaultReviewFormFields);
 
   const [completedReview, setCompletedReview] = useState(
     defaultReviewFormFields
@@ -34,13 +36,15 @@ const CheckoutReviewCard = ({ productReviewTodo }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const dataToSend = JSON.stringify({ ...completedReview });
-    console.log(completedReview);
+    // console.log(completedReview);
+    const dataToSend = JSON.stringify(completedReview).replace(/\\"/g, '"');
+    console.log(dataToSend);
     const endpoint = 'http://localhost:8080/update_reviews';
     const res = await postData(endpoint, dataToSend);
     console.log(res);
-    dispatch(MarkReviewAsDone(prevReviewsToDo, productReviewTodo));
+    if (res.updated_review) {
+      dispatch(MarkReviewAsDone(prevReviewsToDo, productReviewTodo));
+    }
   };
 
   return (

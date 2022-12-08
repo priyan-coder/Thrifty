@@ -87,9 +87,14 @@ const PostCreation = () => {
     console.log(dataToSend);
     const res = await postData(endpoint, dataToSend);
     console.log(res);
-    // dispatch(AddSalesPost(salesPosts, formFields));
     resetFormFields();
+    if (res.updated_in_products) {
+      dispatch(AddSalesPost(salesPosts, res.product));
+    } else {
+      window.alert('Unable to add product!');
+    }
   };
+
   return (
     <Fragment>
       <h2>Add a new Post</h2>

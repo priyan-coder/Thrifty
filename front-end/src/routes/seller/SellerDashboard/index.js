@@ -35,7 +35,7 @@ const SellerDashboard = () => {
         </Modal>
         {salesPosts &&
           salesPosts.map((post) => {
-            return <SalesPostCard key={post.id} product={post} />;
+            return <SalesPostCard key={post.product_id} product={post} />;
           })}
       </SalesPostsContainer>
     </Fragment>
