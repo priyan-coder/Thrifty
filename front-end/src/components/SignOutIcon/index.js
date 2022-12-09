@@ -17,6 +17,7 @@ const SignOutIcon = () => {
       cartItems: cartItems,
       reviewsToDo: reviewsTodo
     });
+    console.log(dataToSend);
     const endpoint = 'http://localhost:8080/update_user_state';
     const res = await postData(endpoint, dataToSend);
     console.log(res);

@@ -12,7 +12,12 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import { SelectCurrentUser } from '../../redux/User/UserSelector';
 import { postData } from '../../tools/ApiHandler';
 const PostCreation = () => {
-  const categoryOptions = ['jewelery', 'electronics', 'men', 'women'];
+  const categoryOptions = [
+    'jewelery',
+    'electronics',
+    `men's clothing`,
+    `women's clothing`
+  ];
   // dispatch passes the action object to the root reducer which inturn sends the action
   // object to ever single reducer function
   const dispatch = useDispatch();

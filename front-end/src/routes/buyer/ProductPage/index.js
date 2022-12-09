@@ -11,10 +11,8 @@ const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const fetchData = async (category) => {
     const endpoint = 'http://localhost:8080/category_search';
-    console.log(category);
     const dataToSend = JSON.stringify({ category });
     const res = await postData(endpoint, dataToSend);
-    console.log(res);
     setProducts(res.response);
   };
 

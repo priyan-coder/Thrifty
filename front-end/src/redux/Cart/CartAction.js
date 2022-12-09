@@ -4,7 +4,6 @@ import CartActionTypes from './CartActionTypes';
 const addCartItem = (cartItems, productToAdd) => {
   // The find() method returns the first element in the provided array that satisfies the provided testing function
   // If no values satisfy the testing function, undefined is returned
-  console.log(productToAdd.product_id);
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.product_id === productToAdd.product_id
   );
