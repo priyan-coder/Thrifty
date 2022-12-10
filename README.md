@@ -1,5 +1,4 @@
 # Thrifty
-Github repo - https://github.com/priyan-coder/Thrifty
 
 > Checkout demo.mp4 in this repository to get an overview of the core features :)
 
